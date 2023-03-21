@@ -1,13 +1,12 @@
 # autor: Krzysztof Karowiec
 
 # Stack
-pnpm
-React
-typescript
+[pnpm](https://pnpm.io/)
+[React](https://react.dev/)
+[typescript](https://www.typescriptlang.org/)
+[styled-components](https://styled-components.com/)
 
-# Opis zadania
-
-Zadanie zostało zrealizowane wykorzystując do tego pnpm [https://pnpm.io/].
+# Start
 
 W celu startu projektu należy zainistalować dependencje:
 `pnpm install`
@@ -15,4 +14,4 @@ W celu startu projektu należy zainistalować dependencje:
 następnie wykonać komendę:
 `pnpm start`
 
-projekt będzie dostępny pod adresem localhost:3000 [http://localhost:3000/]
+projekt będzie dostępny pod adresem [localhost:3000](http://localhost:3000/)
