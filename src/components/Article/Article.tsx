@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import CtaLink from '../CtaLink/CtaLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '../../utils/time';
+import { useAppSelector } from '../../App';
 
-const StyledArticle = styled.div`
+const StyledArticle = styled.div<{grid: boolean}>`
 border-radius: 10px;
 padding: 20px;
 display: grid;
 gap: 20px;
-grid-template-columns: 200px 1fr;
+grid-template-columns: ${props => props.grid ? "1fr" : "200px 1fr"};
 box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
 `;
 
@@ -46,8 +47,10 @@ display: inline-block;
 `;
 
 const Article = ({ article }: { article: IArticle }) => {
+    const showAsGrid = useAppSelector(state => state.display.showAsGrid);
+
     return (
-        <StyledArticle style={{ margin: "20px 0" }}>
+        <StyledArticle grid={showAsGrid}>
             <StyledImage>
                 {!article.urlToImage && <FontAwesomeIcon icon="image" />}
                 {article.urlToImage && <img src={article.urlToImage} />}
