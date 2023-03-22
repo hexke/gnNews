@@ -11,7 +11,7 @@ border-bottom: 2px solid ${color.darkblue};
 `;
 
 const StyledHomeLink = styled(CtaLink)`
-font-size: 24px;
+font-size: 32px;
 font-weight: 700 !important;
 background-color: ${color.darkblue};
 padding: 5px 20px;
