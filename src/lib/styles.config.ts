@@ -5,5 +5,7 @@ export const mq = {
 }
 
 export const color = {
-    blue: "#96CDFF",
+    darkblue: "#005cb3",
+    blue: "#0077e6",
+    lightblue: "#96CDFF",
 }
