@@ -1,17 +1,25 @@
 import './App.css';
-import Footer from './components/footer.tsx/footer';
-import Header from './components/header/header';
+import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from 'react-router-dom';
+import RootLayout from './components/Layout/RootLayout';
+import HomePage from './pages/HomePage';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckSquare, faCoffee, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+const loader = async () => {
+    return redirect("/country/poland");
+}
 
-library.add(faCheckSquare, faCoffee, faArrowRight, faArrowLeft);
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index loader={loader} element={null} />
+            <Route path="/country/:countrySlug" element={<HomePage />} />
+        </Route>
+    )
+);
 
 function App() {
     return (
         <div className="App">
-            <Header />
-            <Footer />
+            <RouterProvider router={router} />
         </div>
     );
 }

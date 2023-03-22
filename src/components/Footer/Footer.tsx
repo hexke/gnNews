@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import Container from '../contaner/container';
+import Container from '../Container/Container';
 import styled from 'styled-components';
 import { color } from '../../lib/styles.config';
 import useInterval from '../../hooks/useInterval';
