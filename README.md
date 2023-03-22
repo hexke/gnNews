@@ -4,6 +4,7 @@
 - [React](https://react.dev/)
 - [typescript](https://www.typescriptlang.org/)
 - [styled-components](https://styled-components.com/)
+- [font awesome](https://fontawesome.com/)
 
 ## Start
 
