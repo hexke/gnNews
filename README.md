@@ -1,17 +1,17 @@
-# autor: Krzysztof Karowiec
+## autor: Krzysztof Karowiec
+## Stack
+- [pnpm](https://pnpm.io/)
+- [React](https://react.dev/)
+- [typescript](https://www.typescriptlang.org/)
+- [styled-components](https://styled-components.com/)
 
-# Stack
-[pnpm](https://pnpm.io/)
-[React](https://react.dev/)
-[typescript](https://www.typescriptlang.org/)
-[styled-components](https://styled-components.com/)
-
-# Start
+## Start
 
 W celu startu projektu należy zainistalować dependencje:
-`pnpm install`
+```pnpm install```
 
 następnie wykonać komendę:
-`pnpm start`
+```pnpm start```
 
-projekt będzie dostępny pod adresem [localhost:3000](http://localhost:3000/)
+projekt będzie dostępny pod adresem:
+[localhost:3000](http://localhost:3000/)
