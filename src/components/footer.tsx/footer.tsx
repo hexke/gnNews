@@ -1,5 +1,5 @@
 
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Container from '../contaner/container';
 import styled from 'styled-components';
 import { color } from '../../lib/styles.config';
@@ -14,7 +14,7 @@ const Footer = () => {
 
     useInterval(() => {
         const currentTime = new Date().toLocaleTimeString();
-        setTime(currentTime)
+        setTime(currentTime);
     }, 1000);
 
     return (
