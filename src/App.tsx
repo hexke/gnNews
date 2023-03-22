@@ -1,16 +1,18 @@
 import './App.css';
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from 'react-router-dom';
 import RootLayout from './components/Layout/RootLayout';
-import HomePage from './pages/HomePage';
+import { HomePage } from './pages/HomePage';
 
-const loader = async () => {
-    return redirect("/country/poland");
-}
+import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import store, { AppDispatch, TRootState } from './store/store';
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
-            <Route index loader={loader} element={null} />
+            <Route index loader={() => redirect("/country/poland")} element={null} />
             <Route path="/country/:countrySlug" element={<HomePage />} />
         </Route>
     )
@@ -19,7 +21,9 @@ const router = createBrowserRouter(
 function App() {
     return (
         <div className="App">
-            <RouterProvider router={router} />
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
         </div>
     );
 }
