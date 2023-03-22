@@ -24,7 +24,6 @@ export const RootLayout = () => {
                     <Outlet />
                 </StyledGrid>
             </Container>
-            <StyledGrid>wsad</StyledGrid>
             <Footer />
         </>
     )
