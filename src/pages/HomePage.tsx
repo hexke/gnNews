@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
 import CtaLink from '../components/CtaLink/CtaLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Article from '../components/Article/Article';
 
 export const HomePage = () => {
     const { countrySlug } = useParams();
@@ -27,14 +28,7 @@ export const HomePage = () => {
     return (
         <div>
             {
-                articles.map(article =>
-                    <div key={article.url}>
-                        <p>{article.title}</p>
-                        <p>{article.author} {article.publishedAt}</p>
-                        <p>{article.content}</p>
-                        <CtaLink to={article.url}>czytaj więcej <FontAwesomeIcon icon="arrow-right" /></CtaLink>
-                    </div>
-                )
+                articles.map(article => <Article article={article} />)
             }
         </div>
     )

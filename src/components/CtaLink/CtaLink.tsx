@@ -1,5 +1,5 @@
 
-import React, { DetailedHTMLProps, HTMLAttributes, HTMLProps, ReactNode } from 'react'
+import React, { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, HTMLProps, ReactNode } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -14,7 +14,7 @@ text-decoration: none;
 type LinkProps = {
     to: string;
     children: ReactNode;
-} & HTMLAttributes<HTMLAnchorElement>;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const CtaLink = ({ to, children, ...props }: LinkProps) => {
     return (
