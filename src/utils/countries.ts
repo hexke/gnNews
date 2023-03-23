@@ -1,4 +1,4 @@
-import lookup from 'country-code-lookup';
+import lookup, { countries } from 'country-code-lookup';
 import { API_KEY } from '../lib/constants';
 
 export const getCountryISO = (country: string): string => {
@@ -17,7 +17,9 @@ export const getCountryName = (coutryISO: string): string => {
     return country.toLocaleUpperCase();
 }
 
-export const getCountryFlag = (countryISO: string): string => {
+export const getCountryFlag = (country: string): string => {
+    const countryISO = lookup.byCountry(country)?.iso2;
+
     return `https://flagsapi.com/${countryISO}/flat/32.png`;
 }
 
