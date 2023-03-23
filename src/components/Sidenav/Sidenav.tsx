@@ -1,13 +1,8 @@
 
-import React, { useEffect, useMemo } from 'react'
 import { countries } from 'country-code-lookup'
 import CtaLink from '../CtaLink/CtaLink';
 import styled from 'styled-components';
 import { getCountryFlag } from '../../utils/countries';
-
-const StyledNav = styled.nav`
-
-`;
 
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
@@ -31,7 +26,7 @@ export const Sidenav = () => {
             {
                 countries.map(countryObj =>
                     <StyledCtaLink key={countryObj.country} to={`/country/${countryObj.country}`}>
-                        <img src={getCountryFlag(countryObj.iso2)} />{countryObj.country}
+                        <img src={getCountryFlag(countryObj.iso2)} alt={countryObj.country} />{countryObj.country}
                     </StyledCtaLink>
                 )
             }

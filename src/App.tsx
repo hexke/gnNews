@@ -12,7 +12,7 @@ export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
-            <Route index loader={() => redirect("/country/poland")} element={null} />
+            <Route index loader={() => redirect("/country/Poland")} element={null} />
             <Route path="/country/:countrySlug" element={<HomePage />} />
         </Route>
     )
