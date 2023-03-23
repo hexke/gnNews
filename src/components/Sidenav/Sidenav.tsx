@@ -3,6 +3,9 @@ import { countries } from 'country-code-lookup'
 import CtaLink from '../CtaLink/CtaLink';
 import styled from 'styled-components';
 import { getCountryFlag } from '../../utils/countries';
+import Filter from '../Filter/Filter';
+import { useCallback, useEffect, useState } from 'react';
+import useFilter from '../../hooks/useFilter';
 
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
@@ -19,14 +22,37 @@ align-items: center;
 }
 `;
 
+interface ICountry {
+    continent: string;
+    region: string;
+    country: string;
+    capital: string;
+    fips: string;
+    iso2: string;
+    iso3: string;
+    isoNo: string;
+    internet: string;
+}
+
 export const Sidenav = () => {
+    const [countriesList, _] = useState<string[]>(() => {
+        const initialState: string[] = countries.map((countryObj: ICountry) => countryObj.country);
+        return initialState;
+    });
+
+    const [filteredItems, filter] = useFilter<string>(countriesList);
+
+    const onPhraseSearch = useCallback((phrase: string) => {
+        filter((country) => country.toLowerCase().includes(phrase));
+    }, [filter]);
 
     return (
         <nav>
+            <Filter onInput={onPhraseSearch} />
             {
-                countries.map(countryObj =>
-                    <StyledCtaLink key={countryObj.country} to={`/country/${countryObj.country}`}>
-                        <img src={getCountryFlag(countryObj.iso2)} alt={countryObj.country} />{countryObj.country}
+                filteredItems.map(country =>
+                    <StyledCtaLink key={country} to={`/country/${country}`}>
+                        <img src={getCountryFlag(country)} alt={country} />{country}
                     </StyledCtaLink>
                 )
             }
