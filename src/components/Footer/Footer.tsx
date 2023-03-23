@@ -4,6 +4,7 @@ import Container from '../Container/Container';
 import styled from 'styled-components';
 import { color } from '../../lib/styles.config';
 import useInterval from '../../hooks/useInterval';
+import { getCurrentTime } from '../../utils/time';
 
 const StyledFooter = styled.div`
 background-color: ${color.blue};  
@@ -13,8 +14,7 @@ const Footer = () => {
     const [time, setTime] = useState<string | null>(new Date().toLocaleTimeString());
 
     useInterval(() => {
-        const currentTime = new Date().toLocaleTimeString();
-        setTime(currentTime);
+        setTime(getCurrentTime());
     }, 1000);
 
     return (
