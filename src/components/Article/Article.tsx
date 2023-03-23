@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '../../utils/time';
 import { useAppSelector } from '../../App';
 
-const StyledArticle = styled.div<{grid: boolean}>`
+const StyledArticle = styled.div<{ grid: boolean }>`
 border-radius: 10px;
 padding: 20px;
 display: grid;
 gap: 20px;
+grid-auto-rows: max-content;
 grid-template-columns: ${props => props.grid ? "1fr" : "200px 1fr"};
 box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
 `;
@@ -27,9 +28,22 @@ justify-content: center;
 }
 `;
 
-const StyledTitle = styled.p`
-font-size: 20px;
+const StyledTitle = styled.p<{ grid: boolean }>`
+font-size: ${props => props.grid ? "16px" : "20px"};
 font-weight: 600;
+margin-bottom: 5px;
+
+&.tile {
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+`;
+
+const StyledInfo = styled.div`
+font-size: 14px;
+color: grey;
 `;
 
 const StyledCtaLink = styled(CtaLink)`
@@ -53,11 +67,11 @@ const Article = ({ article }: { article: IArticle }) => {
         <StyledArticle grid={showAsGrid}>
             <StyledImage>
                 {!article.urlToImage && <FontAwesomeIcon icon="image" />}
-                {article.urlToImage && <img src={article.urlToImage} />}
+                {article.urlToImage && <img src={article.urlToImage} alt={article.title} />}
             </StyledImage>
             <div>
-                <StyledTitle>{article.title}</StyledTitle>
-                <p>{article.author} | {formatDate(article.publishedAt)}</p>
+                <StyledTitle grid={showAsGrid} className={showAsGrid ? "tile" : ""}>{article.title}</StyledTitle>
+                <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
                 <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
             </div>
         </StyledArticle>

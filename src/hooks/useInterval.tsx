@@ -1,10 +1,4 @@
-import { time } from "console";
 import { useCallback, useEffect, useRef } from "react";
-
-type UseIntervalProps = {
-    callback: () => void,
-    timeout: number
-}
 
 const useInterval = (callback: () => void, timeout: number) => {
 
@@ -14,7 +8,7 @@ const useInterval = (callback: () => void, timeout: number) => {
         if (intervalRef.current !== null) return;
 
         intervalRef.current = window.setInterval(callback, timeout);
-    }, []);
+    }, [callback, timeout]);
 
     const clear = useCallback(() => {
         if (!intervalRef.current) return;
@@ -27,7 +21,7 @@ const useInterval = (callback: () => void, timeout: number) => {
         set();
 
         return clear;
-    }, []);
+    }, [set, clear]);
 }
 
 export default useInterval;

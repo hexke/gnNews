@@ -1,5 +1,5 @@
 
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import Container from '../Container/Container';
 import styled from 'styled-components';
 import { color } from '../../lib/styles.config';
@@ -26,21 +26,12 @@ border-radius: 3px;
 }
 `;
 
-const StyledLink = styled(CtaLink)`
-font-weight: 500;
-color: ${color.darkblue};
-
-&:hover {
-    color: ${color.blue};
-}
-`;
-
 export const Header = () => {
     const dispatch = useAppDispatch();
 
     const toggleArticlesDisplay = useCallback(() => {
         dispatch(displayActions.toggle());
-    }, []);
+    }, [dispatch]);
 
     return (
         <StyledHeader>

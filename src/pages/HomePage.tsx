@@ -1,11 +1,10 @@
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getCountryNews } from '../utils/countries';
 import { useParams } from 'react-router-dom';
 import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
 import Article from '../components/Article/Article';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useAppSelector } from '../App';
 
 const StyledGrid = styled.div<{grid: boolean}>`
