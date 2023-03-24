@@ -8,11 +8,11 @@
 
 ## Start
 
-W celu startu projektu należy zainistalować dependencje:
-```pnpm install```
+W celu startu projektu należy zainistalować dependencje:<br/>
+```pnpm install``` lub ```npm install```
 
-następnie wykonać komendę:
-```pnpm start```
+następnie wykonać komendę:<br/>
+```pnpm start``` lub ```npm install```
 
 projekt będzie dostępny pod adresem:
 [localhost:3000](http://localhost:3000/)

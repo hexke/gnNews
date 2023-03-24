@@ -4,8 +4,10 @@ import Container from '../Container/Container';
 import styled from 'styled-components';
 import { color } from '../../lib/styles.config';
 import CtaLink from '../CtaLink/CtaLink';
-import { useAppDispatch } from '../../App';
+import { useAppDispatch, useAppSelector } from '../../App';
 import { displayActions } from '../../store/store';
+import Button from '../Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledHeader = styled.div`
 padding: 10px 0;
@@ -28,6 +30,7 @@ border-radius: 3px;
 
 export const Header = () => {
     const dispatch = useAppDispatch();
+    const showAsGrid = useAppSelector(state => state.display.showAsGrid);
 
     const toggleArticlesDisplay = useCallback(() => {
         dispatch(displayActions.toggle());
@@ -37,7 +40,11 @@ export const Header = () => {
         <StyledHeader>
             <Container>
                 <StyledHomeLink to="/country/Poland">gnNews</StyledHomeLink>
-                <button onClick={toggleArticlesDisplay}>toggle display</button>
+                <Button onClick={toggleArticlesDisplay}>
+                    toggle display:
+                    {!showAsGrid && <FontAwesomeIcon icon="list"/>}
+                    {showAsGrid && <FontAwesomeIcon icon="grip"/>}
+                </Button>
             </Container>
         </StyledHeader>
     )
