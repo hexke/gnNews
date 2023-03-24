@@ -1,4 +1,4 @@
-import lookup, { countries } from 'country-code-lookup';
+import lookup from 'country-code-lookup';
 import { API_KEY } from '../lib/constants';
 
 export const getCountryISO = (country: string): string => {

@@ -8,7 +8,7 @@ const useFilter = <T>(items: T[]): [T[], (filterFn: (item: T) => boolean) => voi
         const newFilteredItems = items.filter(filterFn);
 
         setFilteredItems(newFilteredItems);
-    }, []);
+    }, [items]);
 
     return [filteredItems, filter];
 }

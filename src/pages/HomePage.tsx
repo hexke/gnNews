@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
 import Article from '../components/Article/Article';
 import styled from 'styled-components';
-import { useAppSelector } from '../App';
+import { useAppDispatch, useAppSelector } from '../App';
+import { countActions } from '../store/store';
 
 const StyledGrid = styled.div<{grid: boolean}>`
 gap: 20px;
@@ -16,8 +17,10 @@ grid-template-columns: ${props => props.grid ? "repeat(3, 1fr)" : "1fr"};
 
 export const HomePage = () => {
     const { countrySlug } = useParams();
+    const dispatch = useAppDispatch();
     const [articles, setArticles] = useState<IArticle[]>([]);
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
+
 
     useEffect(() => {
         const getNews = async () => {
@@ -28,6 +31,7 @@ export const HomePage = () => {
             const body = await response.json();
 
             setArticles(body.articles);
+            dispatch(countActions.set(body.totalResults));
         }
 
         getNews();
