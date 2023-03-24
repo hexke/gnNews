@@ -4,7 +4,7 @@ import CtaLink from '../CtaLink/CtaLink';
 import styled from 'styled-components';
 import { getCountryFlag } from '../../utils/countries';
 import Filter from '../Filter/Filter';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import useFilter from '../../hooks/useFilter';
 
 const StyledCtaLink = styled(CtaLink)`
@@ -35,7 +35,7 @@ interface ICountry {
 }
 
 export const Sidenav = () => {
-    const [countriesList, _] = useState<string[]>(() => {
+    const [countriesList, setCountriesList] = useState<string[]>(() => {
         const initialState: string[] = countries.map((countryObj: ICountry) => countryObj.country);
         return initialState;
     });
