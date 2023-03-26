@@ -9,6 +9,7 @@ color: white;
 padding: 5px 12px;
 border: none;
 border-radius: 3px;
+cursor: pointer;
 `;
 
 interface IButtonProps extends HTMLAttributes<HTMLButtonElement> { };

@@ -43,7 +43,7 @@ export const Sidenav = () => {
     const [filteredItems, filter] = useFilter<string>(countriesList);
 
     const onPhraseSearch = useCallback((phrase: string) => {
-        filter((country) => country.toLowerCase().includes(phrase));
+        filter((country) => country.toLowerCase().includes(phrase.toLocaleLowerCase()));
     }, [filter]);
 
     return (
