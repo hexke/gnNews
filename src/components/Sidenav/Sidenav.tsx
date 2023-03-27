@@ -68,7 +68,7 @@ export const Sidenav = () => {
     }, [filter]);
 
     return (
-        <nav>
+        <nav style={{ overflow: "hidden" }}>
             <Filter onInput={onPhraseSearch} />
             <StyledCountryContainer>
                 <div>

@@ -6,9 +6,10 @@ import { color } from '../../lib/styles.config';
 import useInterval from '../../hooks/useInterval';
 import { getCurrentTime } from '../../utils/time';
 import { useAppSelector } from '../../App';
+import { useTranslation } from 'react-i18next';
 
 const StyledFooter = styled.div`
-background-color: ${color.blue};
+background-color: ${color.darkblue};
 color: #E2E2E2;
 padding: 30px 0 70px 0;
 `;
@@ -20,6 +21,7 @@ justify-content: space-between;
 `;
 
 const Footer = () => {
+    const { t } = useTranslation('common');
     const articlesCount = useAppSelector(state => state.count.articlesCount);
     const [time, setTime] = useState<string | null>(new Date().toLocaleTimeString());
 
@@ -32,10 +34,10 @@ const Footer = () => {
             <Container>
                 <StyledFlexContainer>
                     <span>
-                        aktualna godzina: <b>{time}</b>
+                        {t('current_time')}: <b>{time}</b>
                     </span>
                     <span>
-                        ilość artykułów: <b>{articlesCount}</b>
+                        {t('articles_count')}: <b>{articlesCount}</b>
                     </span>
                 </StyledFlexContainer>
             </Container>
