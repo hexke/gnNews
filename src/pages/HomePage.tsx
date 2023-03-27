@@ -25,6 +25,13 @@ ${mq['xsmall']}{
 }
 `;
 
+const StyledParagraph = styled.div`
+grid-column: 1 / -1;
+font-weight: 700;
+text-align: center;
+font-size: 18px;
+`;
+
 export const HomePage = () => {
     const { countryISO } = useParams();
     const dispatch = useAppDispatch();
@@ -54,7 +61,7 @@ export const HomePage = () => {
                 articles.length !== 0 && articles.map(article => <Article key={article.url} article={article} />)
             }
             {
-                articles.length === 0 && <p>{t("no_articles")}</p>
+                articles.length === 0 && <StyledParagraph>{t("no_articles")}</StyledParagraph>
             }
         </StyledGrid>
     )
