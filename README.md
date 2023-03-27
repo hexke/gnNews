@@ -6,6 +6,8 @@
 - [styled-components](https://styled-components.com/)
 - [font awesome](https://fontawesome.com/)
 - [i18next](https://www.i18next.com/)
+- [i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries#readme)
+- [country-code-lookup](https://github.com/richorama/country-code-lookup)
 
 ## Start
 
