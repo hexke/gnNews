@@ -4,5 +4,6 @@
   "search_country": "szukaj kraju",
   "read_more": "czytaj więcej",
   "current_time": "aktualna godzina",
-  "articles_count": "ilość artykułów"
+  "articles_count": "ilość artykułów",
+  "no_articles": "Nie znaleziono artykułów"
 }

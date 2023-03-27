@@ -4,5 +4,6 @@
   "search_country": "search country",
   "read_more": "read more",
   "current_time": "current time",
-  "articles_count": "articles count"
+  "articles_count": "articles count",
+  "no_articles": "No articles found"
 }
