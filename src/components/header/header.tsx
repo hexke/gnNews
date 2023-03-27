@@ -50,16 +50,16 @@ export const Header = () => {
                 <StyledFlexContainer>
                     <StyledHomeLink to="/country/Poland">gnNews</StyledHomeLink>
                     <Button onClick={() => { setIsFeedbackModalOpen(true) }}>
-                        open task
+                        task
                     </Button>
                     <Modal isOpen={isFeedbackModalOpen} onClose={() => { setIsFeedbackModalOpen(false) }}>
                         header modal<br/>
                     </Modal>
 
-                    <Button onClick={toggleArticlesDisplay}>
-                        toggle display:
-                        {!showAsGrid && <FontAwesomeIcon icon="list" />}
-                        {showAsGrid && <FontAwesomeIcon icon="grip" />}
+                    <Button onClick={toggleArticlesDisplay} style={{marginLeft: "10px"}}>
+                        display:
+                        {!showAsGrid && <FontAwesomeIcon icon="list" style={{marginLeft: "5px"}}/>}
+                        {showAsGrid && <FontAwesomeIcon icon="grip" style={{marginLeft: "5px"}}/>}
                     </Button>
                 </StyledFlexContainer>
             </Container>
