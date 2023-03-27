@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { color } from "../../lib/styles.config";
 import { ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 const FilterDiv = styled.div`
 margin-bottom: 15px;
@@ -24,6 +25,7 @@ margin-bottom: 15px;
 `;
 
 const Filter = ({ onInput }: { onInput: (phrase: string) => void }) => {
+    const { t } = useTranslation('common');
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         onInput(e.currentTarget.value);
@@ -31,7 +33,7 @@ const Filter = ({ onInput }: { onInput: (phrase: string) => void }) => {
 
     return (
         <FilterDiv>
-            <label htmlFor="searchCountry">Szukaj kraju:</label>
+            <label htmlFor="searchCountry">{t('search_country')}:</label>
             <input onInput={onInputChange} type="text" id="searchCountry" />
         </FilterDiv>
     )
