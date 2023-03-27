@@ -8,8 +8,9 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../App';
 import { countActions } from '../store/store';
 import { mq } from '../lib/styles.config';
+import { useTranslation } from 'react-i18next';
 
-const StyledGrid = styled.div<{grid: boolean}>`
+const StyledGrid = styled.div<{ grid: boolean }>`
 gap: 20px;
 display: grid;
 height: max-content;
@@ -25,17 +26,18 @@ ${mq['xsmall']}{
 `;
 
 export const HomePage = () => {
-    const { countrySlug } = useParams();
+    const { countryISO } = useParams();
     const dispatch = useAppDispatch();
+    const { t } = useTranslation('common');
     const [articles, setArticles] = useState<IArticle[]>([]);
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
 
 
     useEffect(() => {
         const getNews = async () => {
-            if (!countrySlug) return;
+            if (!countryISO) return;
 
-            const response = await fetch(getCountryNews(countrySlug));
+            const response = await fetch(getCountryNews(countryISO));
 
             const body = await response.json();
 
@@ -44,12 +46,15 @@ export const HomePage = () => {
         }
 
         getNews();
-    }, [countrySlug]);
+    }, [countryISO]);
 
     return (
         <StyledGrid grid={showAsGrid}>
             {
-                articles.map(article => <Article key={article.url} article={article} />)
+                articles.length !== 0 && articles.map(article => <Article key={article.url} article={article} />)
+            }
+            {
+                articles.length === 0 && <p>{t("no_articles")}</p>
             }
         </StyledGrid>
     )

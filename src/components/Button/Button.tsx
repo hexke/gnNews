@@ -14,6 +14,10 @@ cursor: pointer;
 &:hover {
     background-color: ${color.blue};
 }
+
+& svg {
+    margin-left: 5px;
+}
 `;
 
 interface IButtonProps extends HTMLAttributes<HTMLButtonElement> { };

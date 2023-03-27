@@ -1,12 +1,18 @@
 
-import { countries } from 'country-code-lookup'
+import { countries as countriesLookup } from 'country-code-lookup'
 import CtaLink from '../CtaLink/CtaLink';
 import styled from 'styled-components';
-import { getCountryFlag } from '../../utils/countries';
+import { getCountryFlag, getCountryISO } from '../../utils/countries';
 import Filter from '../Filter/Filter';
 import { useCallback, useState } from 'react';
 import useFilter from '../../hooks/useFilter';
 import { mq } from '../../lib/styles.config';
+import { useTranslation } from 'react-i18next';
+import countries from "i18n-iso-countries";
+
+const StyledNav = styled.nav`
+overflow: hidden;  
+`;
 
 const StyledCountryContainer = styled.div`
 ${mq['medium']}{
@@ -19,6 +25,18 @@ ${mq['medium']}{
     }
 }  
 `;
+
+interface ICountry {
+    continent: string;
+    region: string;
+    country: string;
+    capital: string;
+    fips: string;
+    iso2: string;
+    iso3: string;
+    isoNo: string;
+    internet: string;
+}
 
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
@@ -43,21 +61,10 @@ ${mq['medium']}{
 }
 `;
 
-interface ICountry {
-    continent: string;
-    region: string;
-    country: string;
-    capital: string;
-    fips: string;
-    iso2: string;
-    iso3: string;
-    isoNo: string;
-    internet: string;
-}
-
 export const Sidenav = () => {
+    const { t, i18n } = useTranslation();
     const [countriesList, setCountriesList] = useState<string[]>(() => {
-        const initialState: string[] = countries.map((countryObj: ICountry) => countryObj.country);
+        const initialState: string[] = countriesLookup.map((countryObj: ICountry) => countryObj.country);
         return initialState;
     });
 
@@ -68,20 +75,21 @@ export const Sidenav = () => {
     }, [filter]);
 
     return (
-        <nav style={{ overflow: "hidden" }}>
+        <StyledNav>
             <Filter onInput={onPhraseSearch} />
             <StyledCountryContainer>
                 <div>
                     {
                         filteredItems.map(country =>
-                            <StyledCtaLink key={country} to={`/country/${country}`}>
-                                <img src={getCountryFlag(country)} alt={country} />{country}
+                            <StyledCtaLink key={country} to={`/country/${getCountryISO(country)}`}>
+                                <img src={getCountryFlag(country)} alt={country} />
+                                {t(countries.getName(getCountryISO(country), i18n.language, { select: "official" }))}
                             </StyledCtaLink>
                         )
                     }
                 </div>
             </StyledCountryContainer>
-        </nav>
+        </StyledNav>
     )
 }
 
