@@ -4,8 +4,11 @@ import styled from 'styled-components';
 
 const StyledContainer = styled.div`
 max-width: 1200px;
-margin: auto 15px;
+margin: auto;
 
+@media ( max-width: 1230px){
+    margin: auto 10px;
+}
 `;
 
 type ContainerProps = {
