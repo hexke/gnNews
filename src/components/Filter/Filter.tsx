@@ -27,7 +27,6 @@ const Filter = ({ onInput }: { onInput: (phrase: string) => void }) => {
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         onInput(e.currentTarget.value);
-        console.log(e.currentTarget.value);
     };
 
     return (
