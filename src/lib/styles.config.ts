@@ -1,7 +1,7 @@
 export const mq = {
-    large: "@media (max-width: 1200px)",
-    medium: "@media (max-width: 768px)",
-    small: "@media (max-width: 675px)"
+    medium: "@media (max-width: 992px)",
+    small: "@media (max-width: 768px)",
+    xsmall: "@media (max-width: 576px)"
 }
 
 export const color = {

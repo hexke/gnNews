@@ -28,6 +28,7 @@ height: 100vh;
     background-color: white;
     position: relative;
     max-width: 500px;
+    margin: 0 15px;
 }
 
 & button {
