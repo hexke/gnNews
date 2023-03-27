@@ -10,21 +10,17 @@ import Modal from '../../modals/modal';
 import { mq } from '../../lib/styles.config';
 import { useTranslation } from 'react-i18next';
 
-const StyledArticle = styled.div<{ grid: boolean }>`
+const StyledArticle = styled.div`
 border-radius: 10px;
 padding: 20px;
 display: grid;
 gap: 20px;
 grid-auto-rows: max-content;
-grid-template-columns: ${props => props.grid ? "1fr" : "200px 1fr"};
+grid-template-columns: 1fr;
 box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
 
 & button {
     margin-top: 20px;
-}
-
-${mq['small']}{
-    grid-template-columns: ${props => props.grid ? "1fr" : "75px 1fr"};
 }
 `;
 
@@ -62,6 +58,10 @@ font-size: 14px;
 color: grey;
 `;
 
+const StyledDescription = styled.div`
+margin: 10px 0;  
+`;
+
 const StyledCtaLink = styled(CtaLink)`
 font-weight: 500;
 margin-top: 20px;
@@ -82,15 +82,15 @@ const Article = ({ article }: { article: IArticle }) => {
     const { t } = useTranslation('common');
 
     return (
-        <StyledArticle grid={showAsGrid}>
-            <StyledImage>
+        <StyledArticle>
+            {showAsGrid && <StyledImage>
                 {!article.urlToImage && <FontAwesomeIcon icon="image" />}
                 {article.urlToImage && <img src={article.urlToImage} alt={article.title} />}
-            </StyledImage>
+            </StyledImage>}
             <div>
                 <StyledTitle grid={showAsGrid} className={showAsGrid ? "tile" : ""}>{article.title}</StyledTitle>
                 <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
-                {!showAsGrid && <p>{article.description}</p>}
+                {!showAsGrid && <StyledDescription>{article.description}</StyledDescription>}
                 <Button onClick={() => { setIsArticeModalOpen(true) }}>
                     {t('read_more')} <FontAwesomeIcon icon="arrow-up-right-from-square" />
                 </Button>
@@ -98,7 +98,7 @@ const Article = ({ article }: { article: IArticle }) => {
             <Modal isOpen={isArticeModalOpen} onClose={() => { setIsArticeModalOpen(false) }}>
                 <StyledTitle grid={false}>{article.title}</StyledTitle>
                 <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
-                {article.content}
+                {article.description && <StyledDescription>{article.description}</StyledDescription>}
                 <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>{t('to_source')} <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
             </Modal>
         </StyledArticle>
