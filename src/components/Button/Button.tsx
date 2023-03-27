@@ -10,6 +10,10 @@ padding: 5px 12px;
 border: none;
 border-radius: 3px;
 cursor: pointer;
+
+&:hover {
+    background-color: ${color.blue};
+}
 `;
 
 interface IButtonProps extends HTMLAttributes<HTMLButtonElement> { };

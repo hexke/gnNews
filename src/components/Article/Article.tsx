@@ -1,10 +1,12 @@
-import React from 'react'
+import { useState } from 'react'
 import IArticle from '../../interfaces/ArticleInterface/ArticleInterface';
 import styled from 'styled-components';
 import CtaLink from '../CtaLink/CtaLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '../../utils/time';
 import { useAppSelector } from '../../App';
+import Button from '../Button/Button';
+import Modal from '../../modals/modal';
 
 const StyledArticle = styled.div<{ grid: boolean }>`
 border-radius: 10px;
@@ -14,6 +16,10 @@ gap: 20px;
 grid-auto-rows: max-content;
 grid-template-columns: ${props => props.grid ? "1fr" : "200px 1fr"};
 box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+
+& button {
+    margin-top: 20px;
+}
 `;
 
 const StyledImage = styled.div`
@@ -62,6 +68,7 @@ display: inline-block;
 
 const Article = ({ article }: { article: IArticle }) => {
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
+    const [isArticeModalOpen, setIsArticeModalOpen] = useState<boolean>(false);
 
     return (
         <StyledArticle grid={showAsGrid}>
@@ -72,8 +79,17 @@ const Article = ({ article }: { article: IArticle }) => {
             <div>
                 <StyledTitle grid={showAsGrid} className={showAsGrid ? "tile" : ""}>{article.title}</StyledTitle>
                 <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
-                <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
+                {!showAsGrid && <p>{article.description}</p>}
+                <Button onClick={() => { setIsArticeModalOpen(true) }}>
+                    czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" />
+                </Button>
             </div>
+            <Modal isOpen={isArticeModalOpen} onClose={() => { setIsArticeModalOpen(false) }}>
+                <StyledTitle grid={false}>{article.title}</StyledTitle>
+                <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
+                {article.content}
+                <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
+            </Modal>
         </StyledArticle>
     );
 }

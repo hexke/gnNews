@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-import Button from "../components/Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { color } from "../lib/styles.config";
 
 interface IModalProps {
     isOpen: boolean,
@@ -20,10 +22,29 @@ display: grid;
 place-items: center;
 height: 100vh;
 
-& div {
-    padding: 20px;
+& > div {
+    padding: 30px;
     border-radius: 10px;
     background-color: white;
+    position: relative;
+    max-width: 500px;
+}
+
+& button {
+    position: absolute;
+    top: 5px;
+    right:5px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+
+    &:hover {
+        color: ${color.blue};
+        border-color: ${color.blue};
+    }
 }
 `;
 
@@ -37,7 +58,7 @@ export const Modal = ({ isOpen, children, onClose }: IModalProps) => {
             {isOpen && <StyledOverlay onClick={onClose}>
                 <div>
                     {children}
-                    <Button onClick={onClose}>zamknij</Button>
+                    <button onClick={onClose}><FontAwesomeIcon icon={faClose}/></button>
                 </div>
             </StyledOverlay>}
         </>,
