@@ -74,7 +74,7 @@ export const Header = () => {
         <StyledHeader>
             <Container>
                 <StyledFlexContainer>
-                    <StyledHomeLink to="/country/Poland">gnNews</StyledHomeLink>
+                    <StyledHomeLink to="/country/pl">gnNews</StyledHomeLink>
 
                     <StyledLanguageButton onClick={() => { i18next.changeLanguage("en") }}>
                         en
