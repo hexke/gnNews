@@ -2,7 +2,6 @@ import './App.css';
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from 'react-router-dom';
 import RootLayout from './components/Layout/RootLayout';
 import { HomePage } from './pages/HomePage';
-
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import store, { AppDispatch, TRootState } from './store/store';
 

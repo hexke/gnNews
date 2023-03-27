@@ -5,6 +5,7 @@
 - [typescript](https://www.typescriptlang.org/)
 - [styled-components](https://styled-components.com/)
 - [font awesome](https://fontawesome.com/)
+- [i18next](https://www.i18next.com/)
 
 ## Start
 
@@ -12,7 +13,7 @@ W celu startu projektu należy zainistalować dependencje:<br/>
 ```pnpm install``` lub ```npm install```
 
 następnie wykonać komendę:<br/>
-```pnpm start``` lub ```npm install```
+```pnpm start``` lub ```npm start```
 
 projekt będzie dostępny pod adresem:
 [localhost:3000](http://localhost:3000/)

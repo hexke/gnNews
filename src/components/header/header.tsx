@@ -9,6 +9,7 @@ import { displayActions } from '../../store/store';
 import Button from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from '../../modals/modal';
+import { useTranslation } from 'react-i18next';
 
 const StyledHeader = styled.div`
 padding: 10px 0;
@@ -36,6 +37,7 @@ align-items: center;
 `;
 
 export const Header = () => {
+    const { t } = useTranslation('common');
     const dispatch = useAppDispatch();
     const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState<boolean>(false);
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
@@ -50,14 +52,14 @@ export const Header = () => {
                 <StyledFlexContainer>
                     <StyledHomeLink to="/country/Poland">gnNews</StyledHomeLink>
                     <Button onClick={() => { setIsFeedbackModalOpen(true) }}>
-                        task
+                        {t('task')}
                     </Button>
                     <Modal isOpen={isFeedbackModalOpen} onClose={() => { setIsFeedbackModalOpen(false) }}>
                         header modal<br/>
                     </Modal>
 
                     <Button onClick={toggleArticlesDisplay} style={{marginLeft: "10px"}}>
-                        display:
+                        {t('display')}:
                         {!showAsGrid && <FontAwesomeIcon icon="list" style={{marginLeft: "5px"}}/>}
                         {showAsGrid && <FontAwesomeIcon icon="grip" style={{marginLeft: "5px"}}/>}
                     </Button>
