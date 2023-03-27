@@ -2,7 +2,7 @@
 import { countries } from 'country-code-lookup'
 import CtaLink from '../CtaLink/CtaLink';
 import styled from 'styled-components';
-import { getCountryFlag } from '../../utils/countries';
+import { getCountryFlag, getCountryISO } from '../../utils/countries';
 import Filter from '../Filter/Filter';
 import { useCallback, useState } from 'react';
 import useFilter from '../../hooks/useFilter';
@@ -74,7 +74,7 @@ export const Sidenav = () => {
                 <div>
                     {
                         filteredItems.map(country =>
-                            <StyledCtaLink key={country} to={`/country/${country}`}>
+                            <StyledCtaLink key={country} to={`/country/${getCountryISO(country)}`}>
                                 <img src={getCountryFlag(country)} alt={country} />{country}
                             </StyledCtaLink>
                         )

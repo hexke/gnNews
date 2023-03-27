@@ -23,8 +23,6 @@ export const getCountryFlag = (country: string): string => {
     return `https://flagsapi.com/${countryISO}/flat/32.png`;
 }
 
-export function getCountryNews(country: string): string {
-    const countryISO = lookup.byCountry(country)?.iso2.toLocaleLowerCase();
-
+export function getCountryNews(countryISO: string): string {
     return `https://newsapi.org/v2/top-headlines?country=${countryISO}&apiKey=${API_KEY}`;
 }
