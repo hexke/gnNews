@@ -4,9 +4,12 @@ import RootLayout from './components/Layout/RootLayout';
 import { HomePage } from './pages/HomePage';
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import store, { AppDispatch, TRootState } from './store/store';
+import countries from "i18n-iso-countries";
+import en from "i18n-iso-countries/langs/en.json";
+import pl from "i18n-iso-countries/langs/pl.json";
 
-export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
+countries.registerLocale(en);
+countries.registerLocale(pl);
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -26,5 +29,8 @@ function App() {
         </div>
     );
 }
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
 
 export default App;
