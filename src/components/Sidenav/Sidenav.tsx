@@ -6,6 +6,19 @@ import { getCountryFlag } from '../../utils/countries';
 import Filter from '../Filter/Filter';
 import { useCallback, useState } from 'react';
 import useFilter from '../../hooks/useFilter';
+import { mq } from '../../lib/styles.config';
+
+const StyledCountryContainer = styled.div`
+${mq['medium']}{
+    overflow: scroll;
+    
+    & div {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+    }
+}  
+`;
 
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
@@ -19,6 +32,14 @@ align-items: center;
 
 & img {
     margin-right: 10px;
+}
+
+${mq['medium']}{
+    width: max-content;
+
+    & img {
+        margin-right: 5px;
+    }
 }
 `;
 
@@ -49,13 +70,17 @@ export const Sidenav = () => {
     return (
         <nav>
             <Filter onInput={onPhraseSearch} />
-            {
-                filteredItems.map(country =>
-                    <StyledCtaLink key={country} to={`/country/${country}`}>
-                        <img src={getCountryFlag(country)} alt={country} />{country}
-                    </StyledCtaLink>
-                )
-            }
+            <StyledCountryContainer>
+                <div>
+                    {
+                        filteredItems.map(country =>
+                            <StyledCtaLink key={country} to={`/country/${country}`}>
+                                <img src={getCountryFlag(country)} alt={country} />{country}
+                            </StyledCtaLink>
+                        )
+                    }
+                </div>
+            </StyledCountryContainer>
         </nav>
     )
 }

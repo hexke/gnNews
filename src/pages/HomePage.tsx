@@ -7,12 +7,21 @@ import Article from '../components/Article/Article';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../App';
 import { countActions } from '../store/store';
+import { mq } from '../lib/styles.config';
 
 const StyledGrid = styled.div<{grid: boolean}>`
 gap: 20px;
 display: grid;
 height: max-content;
 grid-template-columns: ${props => props.grid ? "repeat(3, 1fr)" : "1fr"};
+
+${mq['small']}{
+    grid-template-columns: ${props => props.grid ? "repeat(2, 1fr)" : "1fr"};
+}
+
+${mq['xsmall']}{
+    grid-template-columns: 1fr;
+}
 `;
 
 export const HomePage = () => {

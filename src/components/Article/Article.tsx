@@ -7,6 +7,7 @@ import { formatDate } from '../../utils/time';
 import { useAppSelector } from '../../App';
 import Button from '../Button/Button';
 import Modal from '../../modals/modal';
+import { mq } from '../../lib/styles.config';
 
 const StyledArticle = styled.div<{ grid: boolean }>`
 border-radius: 10px;
@@ -19,6 +20,10 @@ box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
 
 & button {
     margin-top: 20px;
+}
+
+${mq['small']}{
+    grid-template-columns: ${props => props.grid ? "1fr" : "75px 1fr"};
 }
 `;
 
@@ -44,6 +49,10 @@ display: -webkit-box;
 -webkit-line-clamp: 3;
 -webkit-box-orient: vertical;
 overflow: hidden;
+}
+
+${mq['small']}{
+    font-size: 16px;
 }
 `;
 
