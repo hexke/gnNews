@@ -8,6 +8,7 @@ import { useAppSelector } from '../../App';
 import Button from '../Button/Button';
 import Modal from '../../modals/modal';
 import { mq } from '../../lib/styles.config';
+import { useTranslation } from 'react-i18next';
 
 const StyledArticle = styled.div<{ grid: boolean }>`
 border-radius: 10px;
@@ -78,6 +79,7 @@ display: inline-block;
 const Article = ({ article }: { article: IArticle }) => {
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
     const [isArticeModalOpen, setIsArticeModalOpen] = useState<boolean>(false);
+    const { t } = useTranslation('common');
 
     return (
         <StyledArticle grid={showAsGrid}>
@@ -90,14 +92,14 @@ const Article = ({ article }: { article: IArticle }) => {
                 <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
                 {!showAsGrid && <p>{article.description}</p>}
                 <Button onClick={() => { setIsArticeModalOpen(true) }}>
-                    czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" />
+                    {t('read_more')} <FontAwesomeIcon icon="arrow-up-right-from-square" />
                 </Button>
             </div>
             <Modal isOpen={isArticeModalOpen} onClose={() => { setIsArticeModalOpen(false) }}>
                 <StyledTitle grid={false}>{article.title}</StyledTitle>
                 <StyledInfo>{article.author} | {formatDate(article.publishedAt)}</StyledInfo>
                 {article.content}
-                <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>czytaj więcej <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
+                <StyledCtaLink to={article.url} target='_blank' rel='noopener noreferrer'>{t('to_source')} <FontAwesomeIcon icon="arrow-up-right-from-square" /></StyledCtaLink>
             </Modal>
         </StyledArticle>
     );
