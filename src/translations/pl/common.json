@@ -6,5 +6,6 @@
   "current_time": "aktualna godzina",
   "articles_count": "ilość artykułów",
   "no_articles": "Nie znaleziono artykułów",
-  "to_source": "pokaż źródło"
+  "to_source": "pokaż źródło",
+  "error": "coś poszło nie tak..."
 }
