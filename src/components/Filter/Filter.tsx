@@ -34,7 +34,7 @@ const Filter = ({ onInput }: { onInput: (phrase: string) => void }) => {
     return (
         <FilterDiv>
             <label htmlFor="searchCountry">{t('search_country')}:</label>
-            <input onInput={onInputChange} type="text" id="searchCountry" />
+            <input onInput={onInputChange} type="text" id="searchCountry" data-testid="search-country"/>
         </FilterDiv>
     )
 }
