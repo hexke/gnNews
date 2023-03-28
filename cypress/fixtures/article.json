@@ -1,0 +1,17 @@
+{
+  "articles": [
+    {
+      "source": {
+        "id": "1",
+        "name": "test.pl"
+      },
+      "author": "Test author",
+      "title": "Test title",
+      "description": "test description",
+      "url": "testurl.pl",
+      "urlToImage": "string",
+      "publishedAt": "0",
+      "content": "test content"
+    }
+  ]
+}
