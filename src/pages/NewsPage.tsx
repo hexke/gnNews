@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
-import { getCountryNews } from '../utils/countries';
-import { useParams } from 'react-router-dom';
+import { getCountryNewsUrl } from '../utils/countries';
+import { useLoaderData, useParams, useRouteError } from 'react-router-dom';
 import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
 import Article from '../components/Article/Article';
 import styled from 'styled-components';
@@ -32,28 +32,15 @@ text-align: center;
 font-size: 18px;
 `;
 
-export const HomePage = () => {
-    const { countryISO } = useParams();
+export const NewsPage = () => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation('common');
-    const [articles, setArticles] = useState<IArticle[]>([]);
     const showAsGrid = useAppSelector(state => state.display.showAsGrid);
-
+    const [articles, articlesTotal] = useLoaderData() as [IArticle[], number];
 
     useEffect(() => {
-        const getNews = async () => {
-            if (!countryISO) return;
-
-            const response = await fetch(getCountryNews(countryISO));
-
-            const body = await response.json();
-
-            setArticles(body.articles);
-            dispatch(countActions.set(body.totalResults));
-        }
-
-        getNews();
-    }, [countryISO]);
+        dispatch(countActions.set(articlesTotal));
+    });
 
     return (
         <StyledGrid grid={showAsGrid}>
@@ -67,5 +54,12 @@ export const HomePage = () => {
     )
 }
 
-export default HomePage;
+export const newsLoader = async ({ params }: { params: any }) => {
+    const response = await fetch(getCountryNewsUrl(params.countryISO));
 
+    const body = await response.json();
+
+    return [body.articles, body.totalResults];
+};
+
+export default NewsPage;
