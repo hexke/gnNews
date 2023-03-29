@@ -87,7 +87,8 @@ export const Header = () => {
                         {t('task')}
                     </Button>
                     <Modal isOpen={isFeedbackModalOpen} onClose={() => { setIsFeedbackModalOpen(false) }}>
-                        header modal<br />
+                        <p>Największe trudności sprawiło stworzeni UI. Jak można zauważyć nie jest to mocna strona aplikacji. Jednym z elementów, które chciałem zaimplementować lecz okazały się aktualnie za trudne to memoizacja flag państw.<br/><br/>
+                        Największą satysfakcję sprawiła implemnentacja zmiany języka strony. Do tej pory nie miałem okazji zaimplementować takiego ficzera. ;).</p>
                     </Modal>
 
                     <Button onClick={toggleArticlesDisplay}>
