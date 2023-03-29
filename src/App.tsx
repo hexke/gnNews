@@ -1,5 +1,5 @@
 import './App.css';
-import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import RootLayout from './components/Layout/RootLayout';
 import NewsPage, { newsLoader } from './pages/NewsPage';
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';

@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { getCountryNewsUrl } from '../utils/countries';
-import { useLoaderData, useParams, useRouteError } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
 import Article from '../components/Article/Article';
 import styled from 'styled-components';
