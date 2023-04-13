@@ -1,12 +1,10 @@
-
-import React from 'react'
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import Sidenav from '../Sidenav/Sidenav';
 import styled from 'styled-components';
 import Container from '../Container/Container';
 import { mq } from '../../lib/styles.config';
+import Header from '../header/header';
 
 const StyledLayout = styled.div`
 display: grid;
