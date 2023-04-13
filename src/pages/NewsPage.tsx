@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { getCountryNewsUrl } from '../utils/countries';
 import { useLoaderData } from 'react-router-dom';
-import IArticle from '../interfaces/ArticleInterface/ArticleInterface';
+import IArticle from '../interfaces/ArticleInterface';
 import Article from '../components/Article/Article';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../App';
