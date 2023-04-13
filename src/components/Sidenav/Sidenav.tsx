@@ -9,6 +9,7 @@ import useFilter from '../../hooks/useFilter';
 import { mq } from '../../lib/styles.config';
 import { useTranslation } from 'react-i18next';
 import countries from "i18n-iso-countries";
+import { ICountry } from '../../interfaces/CountryInterface';
 
 const StyledNav = styled.nav`
 overflow: hidden;  
@@ -26,17 +27,7 @@ ${mq['medium']}{
 }  
 `;
 
-interface ICountry {
-    continent: string;
-    region: string;
-    country: string;
-    capital: string;
-    fips: string;
-    iso2: string;
-    iso3: string;
-    isoNo: string;
-    internet: string;
-}
+
 
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
