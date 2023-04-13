@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import IArticle from '../../interfaces/ArticleInterface/ArticleInterface';
+import IArticle from '../../interfaces/ArticleInterface';
 import styled from 'styled-components';
 import CtaLink from '../CtaLink/CtaLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
