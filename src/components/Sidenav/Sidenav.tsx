@@ -27,8 +27,6 @@ ${mq['medium']}{
 }  
 `;
 
-
-
 const StyledCtaLink = styled(CtaLink)`
 width: 100%;
 display: flex;
