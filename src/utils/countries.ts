@@ -1,5 +1,4 @@
 import lookup from 'country-code-lookup';
-import { API_KEY } from '../lib/constants';
 
 export const getCountryISO = (country: string): string => {
     const iso = lookup.byCountry(country)?.iso2;
@@ -24,5 +23,5 @@ export const getCountryFlag = (country: string): string => {
 }
 
 export function getCountryNewsUrl(countryISO: string): string {
-    return `https://newsapi.org/v2/top-headlines?country=${countryISO}&apiKey=${API_KEY}`;
+    return `https://newsapi.org/v2/top-headlines?country=${countryISO}&apiKey=${process.env.REACT_APP_API_KEY}`;
 }
