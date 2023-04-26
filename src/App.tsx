@@ -7,7 +7,7 @@ import store, { AppDispatch, TRootState } from './store/store';
 import countries from "i18n-iso-countries";
 import en from "i18n-iso-countries/langs/en.json";
 import pl from "i18n-iso-countries/langs/pl.json";
-import { DEFAULT_COUNTRY_ISO } from './lib/constants';
+import { DEFAULT_COUNTRY_ISO } from './lib/constant';
 import ErrorPage from './pages/ErrorPage';
 
 countries.registerLocale(en);
